@@ -1,0 +1,9 @@
+node_modules/
+settings.json
+.vscode
+docker-compose.yml
+*.log
+storage/
+dist/
+.vs/
+.git
