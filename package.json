@@ -10,10 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "canvas": "^1.6.5",
-    "discord.js": "11.1.0",
     "snekfetch": "^3.1.11",
     "winston": "^2.3.1",
-    "yamdbf": "^2.6.2"
+    "yamdbf": "github:zajrik/yamdbf"
   },
   "devDependencies": {
     "@types/node": "^8.0.0",
