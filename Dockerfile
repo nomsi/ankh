@@ -3,7 +3,7 @@ FROM node:8-alpine
 LABEL maintainer "Nomsy <me@nomsy.net>"
 
 WORKDIR /usr/src/ankh
-COPY package.json yarn.lock ./
+COPY package.json settings.json ./
 
 RUN apk add --update \
     && apk add --no-cache cairo pango giflib ca-certificates \
@@ -14,13 +14,6 @@ RUN apk add --update \
     && apk del .deps
 
 COPY . .
-
-ENV TOKEN= \
-    PREFIX= \
-    OWNER= \
-    WEATHER_API_KEY= \
-    GOOGLE_API= \
-    DATABASE_URI=
 
 RUN gulp build
 
