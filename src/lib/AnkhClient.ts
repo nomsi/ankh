@@ -1,7 +1,7 @@
 import { Client, ListenerUtil, LogLevel, Logger, Util } from 'yamdbf';
 
 const { on, once } = ListenerUtil;
-const settings = require('../../settings.json');
+const { token, owner, prefix } = require('../../settings.json');
 const { version } = require('../../package.json');
 
 export class AnkhClient extends Client {
@@ -10,10 +10,8 @@ export class AnkhClient extends Client {
 
     public constructor() {
         super({
-            name: 'Ankh',
-            token: settings.token,
-            owner: settings.owner,
-            version: version,
+            token: token,
+            owner: owner,
             unknownCommandError: false,
             statusText: 'Optimal.',
             readyText: 'Ready.',
@@ -21,15 +19,11 @@ export class AnkhClient extends Client {
             ratelimit: '10/1m',
             logLevel: LogLevel.INFO
         });
-        this.settings = settings;
     }
 
     @once('pause')
     private async _onPause(): Promise<any> {
-        /**
-         * @TODO database stuff here.
-         */
-        await this.setDefaultSetting('prefix', settings.prefix);
+        await this.setDefaultSetting('prefix', prefix);
         this.emit('continue');
     }
 
@@ -40,9 +34,6 @@ export class AnkhClient extends Client {
 
     @once('clientReady')
     private _onceClientReady(): void {
-        /**
-         * @TODO init stuff here
-         */
         this.logger.info('Ankh', 'Online.');
     }
 }

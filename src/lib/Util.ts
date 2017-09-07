@@ -1,9 +1,7 @@
 import { AnkhClient } from './AnkhClient';
+import { Command } from 'yamdbf';
+import { Message, MessageOptions } from 'discord.js';
 
-/**
-* This is embed colors associated with embeds and
-* used color constants within Ankh commands.
-*/
 export enum EmbedCode {
     'Default' = 0x000000,
     'Error' = 0xE74C3C,
