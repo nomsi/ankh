@@ -1,17 +1,23 @@
 {
   "name": "ankh",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.3",
+  "description": "Yet another discord bot",
   "scripts": {
     "test": "gulp lint"
   },
-  "keywords": [],
+  "keywords": [
+    "discord",
+    "discordbot",
+    "yamdbf",
+    "typescript"
+  ],
   "author": "Nomsy <me@nomsy.net>",
   "license": "MIT",
   "dependencies": {
-    "canvas": "^1.6.5",
-    "snekfetch": "^3.1.11",
-    "winston": "^2.3.1",
+    "pg": "^7.3.0",
+    "redis": "^2.8.0",
+    "sequelize": "^4.8.4",
+    "snekfetch": "github:devsnek/snekfetch",
     "yamdbf": "github:zajrik/yamdbf"
   },
   "devDependencies": {
