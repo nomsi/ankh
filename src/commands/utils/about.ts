@@ -6,7 +6,7 @@ import * as os from 'os';
 const { version } = require('../../../package');
 
 export default class extends Command<Client> {
-    public constructor(client: Client) {
+    public constructor() {
         super({
             name: 'about',
             aliases: [ 'info' ],
