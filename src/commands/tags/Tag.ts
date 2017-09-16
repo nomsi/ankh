@@ -2,13 +2,14 @@ import { Collection, RichEmbed } from 'discord.js';
 import { CommandDecorators as c, Client, Command, Message, GuildStorage } from 'yamdbf';
 
 @c.guildOnly
+@c.aliases('manage-tags', 'tag')
+@c.group('tags')
 export class Tag extends Command<Client> {
     public constructor() {
         super({
             name: 'tag',
             desc: 'manage tags',
-            usage: `<prefix>tag [add|delete|update] <name> [details]`,
-            group: 'tags'
+            usage: `<prefix>tag [add|delete|update] <name> [details]`
         });
     }
 
