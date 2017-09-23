@@ -16,7 +16,7 @@
   "dependencies": {
     "pg": "^7.3.0",
     "redis": "^2.8.0",
-    "sequelize": "^4.8.4",
+    "sequelize": "^4.10.0",
     "snekfetch": "github:devsnek/snekfetch",
     "yamdbf": "github:zajrik/yamdbf"
   },
