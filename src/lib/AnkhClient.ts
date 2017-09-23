@@ -2,13 +2,12 @@ import { Client, ListenerUtil, LogLevel, Logger, Util } from 'yamdbf';
 import { Database } from '../database/Database';
 
 const { on, once } = ListenerUtil;
-const { token, owner, prefix } = require('../../settings.json');
+const { token, owner, prefix, db } = require('../../settings.json');
 const { version } = require('../../package.json');
 
 export class AnkhClient extends Client {
 
     private readonly logger: Logger = Logger.instance();
-    public settings: any;
 
     public constructor() {
         super({
@@ -32,12 +31,14 @@ export class AnkhClient extends Client {
     @on('clientReady')
     private _onClient(): void {
         this.logger.info('Ankh', 'Preparing...');
-        const db: Database = new Database()
     }
 
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
+
+        const database: Database = new Database();
+        database.init();
     }
 
 }
