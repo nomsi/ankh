@@ -21,7 +21,7 @@ export class Tag extends Command<Client> {
      * Add new tag
      * @param {Message} message message object
      */
-    private async add(message: Message): Promise<void>{
+    private async add(message: Message): Promise<void> {
 
     }
 
@@ -29,7 +29,7 @@ export class Tag extends Command<Client> {
      * Delete existing tag
      * @param {Message} message message object
      */
-    private async delete(message: Message): Promise<void>{
+    private async delete(message: Message): Promise<void> {
 
     }
 
@@ -37,7 +37,7 @@ export class Tag extends Command<Client> {
      * Update existing tag
      * @param {Message} message message object
      */
-    private async update(message: Message): Promise<void>{
+    private async update(message: Message): Promise<void> {
 
     }
 }

@@ -5,6 +5,7 @@ const { token, owner, prefix } = require('../../settings.json');
 const { version } = require('../../package.json');
 
 export class AnkhClient extends Client {
+
     private readonly logger: Logger = Logger.instance();
     public settings: any;
 
@@ -36,4 +37,5 @@ export class AnkhClient extends Client {
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
     }
+
 }

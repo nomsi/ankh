@@ -23,6 +23,7 @@ export default class extends Command<Client> {
             .setAuthor('Ankh', this.client.user.avatarURL)
             .setColor(EmbedCode.Profile)
             .setDescription(`Ankh v${version} is a multi-purpose WIP Discord bot.`)
+            .addBlankField()
             .addField('Servers', this.client.guilds.size.toString(), true)
             .addField('Channels', this.client.channels.size.toString(), true)
             .addField('Users', this.client.guilds.map((guild: Guild) => guild.memberCount)
