@@ -1,4 +1,5 @@
 import { Client, ListenerUtil, LogLevel, Logger, Util } from 'yamdbf';
+import { Database } from '../database/Database';
 
 const { on, once } = ListenerUtil;
 const { token, owner, prefix } = require('../../settings.json');
@@ -31,6 +32,7 @@ export class AnkhClient extends Client {
     @on('clientReady')
     private _onClient(): void {
         this.logger.info('Ankh', 'Preparing...');
+        const db: Database = new Database()
     }
 
     @once('clientReady')

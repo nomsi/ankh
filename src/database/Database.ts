@@ -6,8 +6,8 @@ export class Database {
     private db: any;
     private readonly logger: Logger = Logger.instance();
 
-    public constructor(creds: any) {
-        this.db = new Sequelize(creds.database, creds.user, creds.password, {
+    public constructor(creds: string) {
+        this.db = new Sequelize(creds, {
             dialect: 'postgres',
             logging: false,
             pool: {
