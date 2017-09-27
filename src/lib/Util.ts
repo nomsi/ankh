@@ -9,3 +9,8 @@ export enum EmbedCode {
     'Info' = 0x2ECC71,
     'Profile' = 0x9B59B6
 }
+
+export enum ErrorCodes {
+    'NOT_FOUND_BLIZZARD' = 'Profile was not found. Try using a different name?',
+    'NOT_FOUND_WEB' = '404 Not Found was returned',
+}

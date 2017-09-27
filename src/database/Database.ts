@@ -21,4 +21,5 @@ export class Database {
                 this.logger.error('postgres', `Error connecting to database: ${err}`);
             });
     }
+
 }
