@@ -1,6 +1,6 @@
-import { Client, ListenerUtil, LogLevel, Logger, Util } from 'yamdbf';
-import { Database } from '../database/Database';
+import { Client, ListenerUtil, LogLevel, Logger, Util, Providers } from 'yamdbf';
 
+const { PostgresProvider } = Providers;
 const { on, once } = ListenerUtil;
 const { token, owner, prefix, db } = require('../../settings.json');
 const { version } = require('../../package.json');
@@ -8,17 +8,18 @@ const { version } = require('../../package.json');
 export class AnkhClient extends Client {
 
     private readonly logger: Logger = Logger.instance();
-
+    private readonly postgres: any = PostgresProvider(db.postgres);
     public constructor() {
         super({
             token: token,
             owner: owner,
             unknownCommandError: false,
+            provider: PostgresProvider(db.postgres),
             statusText: 'Optimal.',
             readyText: 'Ready.',
             commandsDir: './dist/commands',
             ratelimit: '10/1m',
-            logLevel: LogLevel.INFO
+            logLevel: LogLevel.DEBUG
         });
     }
 
@@ -28,17 +29,20 @@ export class AnkhClient extends Client {
         this.emit('continue');
     }
 
-    @on('clientReady')
-    private _onClient(): void {
-        this.logger.info('Ankh', 'Preparing...');
-    }
-
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
+    }
 
-        const database: Database = new Database();
-        database.init();
+    @on('debug')
+    private _onDebug(m: string): void {
+        if (m.includes('Authenticated using token') || m.toLocaleLowerCase().includes('heartbeat')) return;
+        this.logger.debug('Discord', m);
+    }
+
+    @on('clientReady')
+    private _onClient(): void {
+        this.logger.info('Ankh', 'Preparing...');
     }
 
 }

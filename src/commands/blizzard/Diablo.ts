@@ -22,13 +22,14 @@ export class Diablo extends Command<Client> {
      * @param args arguments
      */
     public action(message: Message, args: string[]): void {
+        if (args[1]) return;
     }
 
     /**
      * Get battletag from Blizzard API
      * @param {string} battletag user battletag
      */
-    private getProfile(battletag: string): Promise<void> {
+    private getProfile(battletag: string): Promise<string> {
         return;
     }
 }

@@ -35,7 +35,6 @@ export default class extends Command<Client> {
             .addField('More information to follow', 'As Ankh is currently under development, expect more to be added here.', true)
             .addField('Help', `To see currently avaliable commands, type ${calltag}@${this.client.user.tag} help${calltag}.`, true)
             .setTimestamp();
-
         message.channel.send({embed: embed, disableEveryone: true});
     }
 }
