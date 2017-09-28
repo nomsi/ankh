@@ -36,7 +36,8 @@ export class AnkhClient extends Client {
 
     @on('debug')
     private _onDebug(m: string): void {
-        if (m.includes('Authenticated using token') || m.toLocaleLowerCase().includes('heartbeat')) return;
+        if (m.includes('Authenticated using token') || m.toLocaleLowerCase().includes('heartbeat'))
+            return;
         this.logger.debug('Discord', m);
     }
 
