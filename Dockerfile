@@ -13,13 +13,11 @@ RUN apk add --update \
     && apk add --no-cache cairo pango giflib ca-certificates \
     && apk add --no-cache --virtual .deps build-tools pixman-dev \
     cairo-dev pangomm-dev libjpeg-turbo-dev giflib-dev \
-    && npm i \
     && npm i gulp typescript -g \
+    && npm i \
     && apk del .deps
 
-# Copy and build
+# Copy, build, and run
 COPY . .
 RUN gulp build
-
-# Run
-CMD [ "node", "--harmony", "dist/ankh.js" ]
+CMD [ "node", "dist/ankh.js" ]
