@@ -5,6 +5,9 @@ const { on, once } = ListenerUtil;
 const { token, owner, prefix, db } = require('../../settings.json');
 const { version } = require('../../package.json');
 
+/**
+ * @todo Add redis publish/subscribe client here
+ */
 export class AnkhClient extends Client {
 
     private readonly logger: Logger = Logger.instance();

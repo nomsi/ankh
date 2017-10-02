@@ -4,6 +4,7 @@ import * as snek from 'snekfetch';
 
 /**
  * Diablo Career Profile Command
+ * @todo actually work on this.
  */
 @c.aliases('d3', 'd3-career', 'diablo3')
 @c.group('blizzard')

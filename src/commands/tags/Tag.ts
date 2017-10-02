@@ -29,7 +29,10 @@ export class Tag extends Command<Client> {
             await this.storage.set('guild_tags', {});
         }
 
-        // Action handler
+        /**
+         * @todo add channel specific tag flag
+         * action controller
+         */
         switch (action) {
             case 'add':
                 this.add(message, this.storage, args);
