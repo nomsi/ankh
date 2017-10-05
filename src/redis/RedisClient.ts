@@ -13,7 +13,7 @@ export class RedisClient {
     private readonly logger: Logger = Logger.instance();
 
     public constructor(config: any) {
-        this.host = config.host;
+        this.host = config.ip;
         this.channels = config.channels;
 
         this.redis = new client({

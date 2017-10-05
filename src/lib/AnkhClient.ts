@@ -38,7 +38,7 @@ export class AnkhClient extends Client {
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
-        this.redis = new redis(db.redis.channels);
+        this.redis = new redis(db.redis);
     }
 
     @on('debug')
