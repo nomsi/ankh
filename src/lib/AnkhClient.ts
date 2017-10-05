@@ -1,4 +1,5 @@
 import { Client, ListenerUtil, LogLevel, Logger, Util, Providers } from 'yamdbf';
+import { RedisClient as redis } from '../redis/RedisClient';
 
 const { PostgresProvider } = Providers;
 const { on, once } = ListenerUtil;
@@ -12,6 +13,8 @@ export class AnkhClient extends Client {
 
     private readonly logger: Logger = Logger.instance();
     private readonly postgres: any = PostgresProvider(db.postgres);
+    private redis: redis;
+
     public constructor() {
         super({
             token: token,
@@ -35,6 +38,7 @@ export class AnkhClient extends Client {
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
+        this.redis = new redis(db.redis.channels);
     }
 
     @on('debug')

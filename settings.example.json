@@ -1,0 +1,18 @@
+{
+    "token": "",
+    "owner": [
+
+    ],
+    "prefix": "?",
+    "db": {
+        "postgres": "",
+        "redis": {
+            "ip": "",
+            "channels": [
+                "bot.*",
+                "server.*",
+                "web.*"
+            ]
+        }
+    }
+}
