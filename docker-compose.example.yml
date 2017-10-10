@@ -1,0 +1,15 @@
+version: '3'
+services:
+  ankh:
+    build: .
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+  postgres:
+    image: 'postgres:9-alpine'
+    environment:
+      - POSTGRES_USER=ankh
+      - POSTGRES_PASSWORD=ankh
+  redis:
+    image: 'redis:3-alpine'

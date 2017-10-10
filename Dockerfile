@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM mhart/alpine-node:latest
 # Tags
 LABEL maintainer "Nomsy <me@nomsy.net>"
 
