@@ -1,9 +1,9 @@
-import { Collection, RichEmbed } from 'discord.js';
+import { RichEmbed as embed } from 'discord.js';
 import { CommandDecorators as c, Client, Command, Message, GuildStorage } from 'yamdbf';
 
 @c.guildOnly
 @c.aliases('manage-tags', 'tag')
-@c.group('tags')
+@c.group('ankh-utils')
 export class Tag extends Command<Client> {
 
     private storage: GuildStorage;
@@ -12,7 +12,7 @@ export class Tag extends Command<Client> {
         super({
             name: 'tag',
             desc: 'manage tags',
-            usage: `<prefix>tag [add|delete|update] <name> [details]`
+            usage: `<prefix>tag [add|delete|update|list] <name> [details]`
         });
     }
 
@@ -91,4 +91,13 @@ export class Tag extends Command<Client> {
             message.channel.send('Tag updated');
         }
     }
+
+    /**
+     * Get tag lists
+     * @param {Message} message message object
+     */
+    private async list(message: Message): Promise<void> {
+
+    }
+
 }

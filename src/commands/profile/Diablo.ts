@@ -7,7 +7,7 @@ import * as snek from 'snekfetch';
  * @todo actually work on this.
  */
 @c.aliases('d3', 'd3-career', 'diablo3')
-@c.group('blizzard')
+@c.group('ankh-profile')
 export class Diablo extends Command<Client> {
     public constructor() {
         super({
