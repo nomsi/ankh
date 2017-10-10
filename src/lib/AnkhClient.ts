@@ -3,7 +3,7 @@ import { RedisClient as redis } from '../redis/RedisClient';
 
 const { PostgresProvider } = Providers;
 const { on, once } = ListenerUtil;
-const { TOKEN, OWNERS, COMMAND_PREFIX, PGSQL_DB, REDIS_DB } = process.env;
+const { TOKEN, OWNERS, COMMAND_PREFIX, PGSQL_DB, REDIS } = process.env;
 const { version } = require('../../package.json');
 
 export class AnkhClient extends Client {
@@ -36,7 +36,7 @@ export class AnkhClient extends Client {
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
-        this.redis = new redis(REDIS_DB); /** @todo FINALLY. */
+        this.redis = new redis(REDIS);
     }
 
     @on('debug')
