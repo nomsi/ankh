@@ -6,10 +6,17 @@ services:
     depends_on:
       - postgres
       - redis
+    environment:
+      - TOKEN=
+      - COMMAND_PREFIX=
+      - OWNERS=
+      - PGSQL_DB=
+      - REDIS=
   postgres:
     image: 'postgres:9-alpine'
     environment:
       - POSTGRES_USER=ankh
       - POSTGRES_PASSWORD=ankh
+      - POSTGRES_DB=ankh
   redis:
     image: 'redis:3-alpine'
