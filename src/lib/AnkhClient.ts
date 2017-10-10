@@ -9,7 +9,6 @@ const { version } = require('../../package.json');
 export class AnkhClient extends Client {
 
     private readonly logger: Logger = Logger.instance();
-    private readonly postgres: any = PostgresProvider(PGSQL_DB);
     private redis: redis;
 
     public constructor() {
@@ -36,7 +35,10 @@ export class AnkhClient extends Client {
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
-        this.redis = new redis(REDIS);
+        this.redis = new redis({
+            ip: REDIS,
+            channels: [ 'bot.*', 'web.*' ]
+        });
     }
 
     @on('debug')

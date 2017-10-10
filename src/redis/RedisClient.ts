@@ -18,9 +18,7 @@ export class RedisClient {
 
         this.redis = new client({
             host: this.host,
-            port: 6379,
-            max_attempts: 3,
-            connect_timeout: 300
+            port: 6379
         });
     }
 

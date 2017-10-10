@@ -4,7 +4,6 @@ import { CommandDecorators as c, Client, Command, Message, GuildStorage } from '
 @c.guildOnly
 @c.aliases('manage-tags', 'tag')
 @c.group('tags')
-@c.hidden
 export class Tag extends Command<Client> {
 
     private storage: GuildStorage;

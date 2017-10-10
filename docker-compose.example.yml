@@ -3,20 +3,22 @@ services:
   ankh:
     build: .
     restart: always
-    depends_on:
-      - postgres
-      - redis
     environment:
       - TOKEN=
-      - COMMAND_PREFIX=
+      - COMMAND_PREFIX=?
       - OWNERS=
-      - PGSQL_DB=
-      - REDIS=
+      - PGSQL_DB=postgres://ankh:ankh@postgres/ankh
+      - REDIS=redis
+    depends_on:
+      - redis
+      - postgres
   postgres:
-    image: 'postgres:9-alpine'
+    image: 'postgres:9.3-alpine'
     environment:
       - POSTGRES_USER=ankh
       - POSTGRES_PASSWORD=ankh
       - POSTGRES_DB=ankh
   redis:
-    image: 'redis:3-alpine'
+    image: 'convox/redis:latest'
+    ports:
+      - "6379:6379"

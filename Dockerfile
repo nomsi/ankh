@@ -8,11 +8,6 @@ WORKDIR /usr/src/ankh
 # Copy important stuff.
 COPY package.json package-lock.json settings.json ./
 
-# Set environment variables for configuration
-ENV TOKEN= \
-    COMMAND_PREFIX= \
-    OWNERS= \
-    PGSQL_DB=
 
 # Install dependencies
 RUN apk add --update \
@@ -23,8 +18,16 @@ RUN apk add --update \
     && npm i \
     && apk del .deps
 
+# Set environment variables for configuration
+ENV TOKEN= \
+    COMMAND_PREFIX= \
+    OWNERS= \
+    PGSQL_DB= \
+    REDIS=
+
 # Copy, build, and run
 COPY . .
+
 RUN gulp build
 
 CMD [ "npm", "start" ]
