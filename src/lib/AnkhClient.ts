@@ -3,24 +3,21 @@ import { RedisClient as redis } from '../redis/RedisClient';
 
 const { PostgresProvider } = Providers;
 const { on, once } = ListenerUtil;
-const { token, owner, prefix, db } = require('../../settings.json');
+const { TOKEN, OWNERS, COMMAND_PREFIX, PGSQL_DB, REDIS_DB } = process.env;
 const { version } = require('../../package.json');
 
-/**
- * @todo Add redis publish/subscribe client here
- */
 export class AnkhClient extends Client {
 
     private readonly logger: Logger = Logger.instance();
-    private readonly postgres: any = PostgresProvider(db.postgres);
+    private readonly postgres: any = PostgresProvider(PGSQL_DB);
     private redis: redis;
 
     public constructor() {
         super({
-            token: token,
-            owner: owner,
+            token: TOKEN,
+            owner: OWNERS.split('|'),
             unknownCommandError: false,
-            provider: PostgresProvider(db.postgres),
+            provider: PostgresProvider(PGSQL_DB),
             statusText: 'Optimal.',
             readyText: 'Ready.',
             commandsDir: './dist/commands',
@@ -31,7 +28,7 @@ export class AnkhClient extends Client {
 
     @once('pause')
     private async _onPause(): Promise<any> {
-        await this.setDefaultSetting('prefix', prefix);
+        await this.setDefaultSetting('prefix', COMMAND_PREFIX);
         this.logger.info('Ankh', 'Preparing');
         this.emit('continue');
     }
@@ -39,7 +36,7 @@ export class AnkhClient extends Client {
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
-        this.redis = new redis(db.redis); /** @todo FINALLY. */
+        this.redis = new redis(REDIS_DB); /** @todo FINALLY. */
     }
 
     @on('debug')
