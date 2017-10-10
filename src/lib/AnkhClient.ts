@@ -32,13 +32,14 @@ export class AnkhClient extends Client {
     @once('pause')
     private async _onPause(): Promise<any> {
         await this.setDefaultSetting('prefix', prefix);
+        this.logger.info('Ankh', 'Preparing');
         this.emit('continue');
     }
 
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
-        this.redis = new redis(db.redis);
+        this.redis = new redis(db.redis); /** @todo FINALLY. */
     }
 
     @on('debug')
@@ -50,7 +51,8 @@ export class AnkhClient extends Client {
 
     @on('clientReady')
     private _onClient(): void {
-        this.logger.info('Ankh', 'Preparing...');
+        this.logger.info('Ankh', 'Ready!');
+        this.user.setGame(`Optimal. @${this.user.tag} help`);
     }
 
 }
