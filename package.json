@@ -3,7 +3,9 @@
   "version": "0.0.3",
   "description": "Yet another discord bot",
   "scripts": {
-    "test": "gulp lint"
+    "test": "gulp lint",
+    "start": "node ./dist/ankh.js",
+    "build": "gulp build"
   },
   "keywords": [
     "discord",

@@ -8,11 +8,17 @@ WORKDIR /usr/src/ankh
 # Copy important stuff.
 COPY package.json package-lock.json settings.json ./
 
+# Set environment variables for configuration
+ENV TOKEN= \
+    COMMAND_PREFIX= \
+    OWNERS= \
+    PGSQL_DB=
+
 # Install dependencies
 RUN apk add --update \
-    && apk add --no-cache cairo pango giflib ca-certificates \
-    && apk add --no-cache --virtual .deps build-tools pixman-dev \
-    cairo-dev pangomm-dev libjpeg-turbo-dev giflib-dev \
+    && apk add --no-cache curl \
+  	&& apk add --no-cache --virtual .deps git build-base g++ \
+  	&& apk add --no-cache --virtual .npm-deps pango pangomm-dev pangomm cairo-dev libjpeg-turbo-dev pango pixman \
     && npm i gulp typescript -g \
     && npm i \
     && apk del .deps
@@ -20,4 +26,5 @@ RUN apk add --update \
 # Copy, build, and run
 COPY . .
 RUN gulp build
-CMD [ "node", "dist/ankh.js" ]
+
+CMD [ "npm", "start" ]
