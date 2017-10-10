@@ -18,20 +18,13 @@ export class Tag extends Command<Client> {
 
     public async action(message: Message, args: string[]): Promise<void> {
 
-        // Argument assignment and storage creaction
         const action: string = args[0];
         this.storage = message.guild.storage;
 
-        // Create table 'guild_tags' if it doesn't exist in the guild
-        // database.
         if (!await this.storage.exists('guild_tags')) {
             await this.storage.set('guild_tags', {});
         }
 
-        /**
-         * @todo add channel specific tag flag
-         * action controller
-         */
         switch (action) {
             case 'add':
                 this.add(message, this.storage, args);
@@ -41,6 +34,9 @@ export class Tag extends Command<Client> {
                 break;
             case 'update':
                 this.update(message, this.storage, args);
+                break;
+            case 'list':
+                this.list(message, this.storage);
                 break;
             default: break;
         }
@@ -54,7 +50,7 @@ export class Tag extends Command<Client> {
      * @param {string[]} data argument data
      */
     private async add(message: Message, _storage: GuildStorage, data: string[]): Promise<void> {
-        if (await _storage.exists(`tags.${data[1]}`)) {
+        if (await _storage.exists(`guild_tags.${data[1]}`)) {
             message.channel.send(`The tag already exists.`);
         } else {
             await _storage.set(`guild_tags.${data}`, data.slice(2).join(' '));
@@ -69,7 +65,7 @@ export class Tag extends Command<Client> {
      * @param {string[]} data argument data
      */
     private async delete(message: Message, _storage: GuildStorage, data: string[]): Promise<void> {
-        if (!(await _storage.exists(`tags.${data[1]}`))) {
+        if (!(await _storage.exists(`guild_tags.${data[1]}`))) {
             message.channel.send('Tag doesn\'t exist');
         } else {
             await _storage.remove(`guild_tags.${data[1]}`);
@@ -84,7 +80,7 @@ export class Tag extends Command<Client> {
      * @param {string[]} data argument data
      */
     private async update(message: Message, _storage: GuildStorage, data: string[]): Promise<void> {
-        if (!(await _storage.exists(`tags.${data[1]}`))) {
+        if (!(await _storage.exists(`guild_tags.${data[1]}`))) {
             message.channel.send('Tag doesn\'t exist');
         } else {
             await _storage.set(`guild_tags.${data[1]}`, data.slice(2).join(' '));
@@ -95,9 +91,21 @@ export class Tag extends Command<Client> {
     /**
      * Get tag lists
      * @param {Message} message message object
+     * @param {GuildStorage} _storage storage constructor
      */
-    private async list(message: Message): Promise<void> {
+    private async list(message: Message, _storage: GuildStorage): Promise<void> {
 
+        const tagList: object = await _storage.get(`guild_tags`);
+        const cb = '```';
+
+        if (Object.keys(tagList).length === 0 && !tagList) {
+            message.channel.send('This guild has no tags.');
+        } else {
+            let _embed: embed = new embed()
+                .setTitle(`Tags for ${message.guild.name}`)
+                .setDescription(`${cb}\n${Object.keys(tagList).join(', ')}\n${cb}`);
+            message.channel.send({ embed: _embed, disableEveryone: true });
+        }
     }
 
 }
