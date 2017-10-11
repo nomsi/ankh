@@ -19,7 +19,7 @@
     "pg": "6.4.2",
     "redis": "^2.8.0",
     "sequelize": "^4.10.0",
-    "snekfetch": "github:devsnek/snekfetch",
+    "snekfetch": "github:devsnek/snekfetch#master",
     "tsubaki": "^1.2.0",
     "yamdbf": "github:zajrik/yamdbf"
   },

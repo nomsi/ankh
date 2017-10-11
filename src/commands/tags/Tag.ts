@@ -103,7 +103,7 @@ export class Tag extends Command<Client> {
         } else {
             let _embed: embed = new embed()
                 .setTitle(`Tags for ${message.guild.name}`)
-                .setDescription(`${cb}\n${Object.keys(tagList).join(', ')}\n${cb}`);
+                .setDescription(`${cb}\n${Object.keys(tagList).sort().join(', ')}\n${cb}`);
             message.channel.send({ embed: _embed, disableEveryone: true });
         }
     }

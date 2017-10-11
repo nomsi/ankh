@@ -1,4 +1,5 @@
 FROM mhart/alpine-node:latest
+
 # Tags
 LABEL maintainer "Nomsy <me@nomsy.net>"
 
@@ -6,7 +7,7 @@ LABEL maintainer "Nomsy <me@nomsy.net>"
 WORKDIR /usr/src/ankh
 
 # Copy important stuff.
-COPY package.json package-lock.json settings.json ./
+COPY package.json package-lock.json ./
 
 
 # Install dependencies

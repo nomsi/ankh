@@ -26,8 +26,7 @@ export class AnkhClient extends Client {
     }
 
     @once('pause')
-    private async _onPause(): Promise<any> {
-        await this.setDefaultSetting('prefix', COMMAND_PREFIX);
+    private _onPause(): void {
         this.logger.info('Ankh', 'Preparing');
         this.emit('continue');
     }
@@ -49,7 +48,8 @@ export class AnkhClient extends Client {
     }
 
     @on('clientReady')
-    private _onClient(): void {
+    private async _onClient(): Promise<void> {
+        await this.setDefaultSetting('prefix', COMMAND_PREFIX);
         this.logger.info('Ankh', 'Ready!');
         this.user.setGame(`Optimal. @${this.user.tag} help`);
     }
