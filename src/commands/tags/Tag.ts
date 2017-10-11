@@ -53,7 +53,7 @@ export class Tag extends Command<Client> {
         if (await _storage.exists(`guild_tags.${data[1]}`)) {
             message.channel.send(`The tag already exists.`);
         } else {
-            await _storage.set(`guild_tags.${data}`, data.slice(2).join(' '));
+            await _storage.set(`guild_tags.${data[1]}`, data.slice(2).join(' '));
             message.channel.send(`Tag '${data[1]}' added`);
         }
     }
