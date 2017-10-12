@@ -24,7 +24,8 @@ ENV TOKEN= \
     COMMAND_PREFIX= \
     OWNERS= \
     PGSQL_DB= \
-    REDIS=
+    REDIS= \
+    REDIS_CHANNELS= 
 
 # Copy, build, and run
 COPY . .

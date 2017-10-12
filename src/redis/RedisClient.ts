@@ -4,6 +4,7 @@ import { Logger } from 'yamdbf';
 
 PromiseAll(client.prototype);
 PromiseAll(Multi.prototype);
+PromiseAll(client.prototype.psubscribe);
 
 export class RedisClient {
 
@@ -41,12 +42,16 @@ export class RedisClient {
             this.logger.debug('redis', 'Reconnecting.');
         }).on('ready', (): void => {
             this.logger.debug('redis', 'Ready! Events queued.');
+        }).on('psubscribe', (p: string, c: number): void => {
+            this.logger.debug('redis', `Subscribed successfully to ${c} channels.`);
         }).on('end', (): void => {
             this.logger.debug('redis', 'Connection interrupted. Perhaps the server shutdown?');
         });
 
         this.redis.subscribe('bot.status');
         this.redis.publish('bot.status', 'true');
+
+        this.redis.psubscribe(this.channels);
     }
 
 }

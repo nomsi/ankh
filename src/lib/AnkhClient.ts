@@ -3,7 +3,7 @@ import { RedisClient as redis } from '../redis/RedisClient';
 
 const { PostgresProvider } = Providers;
 const { on, once } = ListenerUtil;
-const { TOKEN, OWNERS, COMMAND_PREFIX, PGSQL_DB, REDIS } = process.env;
+const { TOKEN, OWNERS, COMMAND_PREFIX, PGSQL_DB, REDIS, REDIS_CHANNELS } = process.env;
 const { version } = require('../../package.json');
 
 export class AnkhClient extends Client {
@@ -34,16 +34,21 @@ export class AnkhClient extends Client {
     @once('clientReady')
     private _onceClientReady(): void {
         this.logger.info('Ankh', 'Online.');
+
         this.redis = new redis({
             ip: REDIS,
-            channels: [ 'bot.*', 'web.*' ]
+            channels: REDIS_CHANNELS.split('|')
         });
+        this.redis.init();
     }
 
     @on('debug')
     private _onDebug(m: string): void {
-        if (m.includes('Authenticated using token') || m.toLocaleLowerCase().includes('heartbeat'))
-            return;
+        if (m.includes('Authenticated using token')) return;
+        if (m.toLocaleLowerCase().includes('heartbeat')) {
+            // this.redis.redisdb.publish('bot.heartbeat', m);
+        }
+
         this.logger.debug('Discord', m);
     }
 
