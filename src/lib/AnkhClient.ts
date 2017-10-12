@@ -47,6 +47,16 @@ export class AnkhClient extends Client {
         this.logger.debug('Discord', m);
     }
 
+    @on('error')
+    private _onError(e: Error): void {
+        this.logger.error('Discord', e.stack);
+    }
+
+    @on('reconnecting')
+    private _onReconnecting(): void {
+        this.logger.warn('Discord', 'Reconnecting...');
+    }
+
     @on('clientReady')
     private async _onClient(): Promise<void> {
         await this.setDefaultSetting('prefix', COMMAND_PREFIX);
