@@ -1,10 +1,6 @@
 import { RedisClient as client, Multi, createClient as CreateClient } from 'redis';
-import { promisifyAll as PromiseAll } from 'tsubaki';
+import * as redis from 'redis-p';
 import { Logger } from 'yamdbf';
-
-PromiseAll(client.prototype);
-PromiseAll(Multi.prototype);
-PromiseAll(client.prototype.psubscribe);
 
 export class RedisClient {
 
@@ -27,15 +23,15 @@ export class RedisClient {
      * redisdb
      * @description public getter for the redis client
      */
-    public get redisdb(): client {
-        return this.redis;
+    public static get redisdb(): client {
+        return RedisClient.prototype.redis;
     }
 
     /**
      * init
      * @description Initiate redis database connection and send message to services that the bot is alive.
      */
-    public init(): void {
+    public async init(): Promise<void> {
         this.redis.on('error', (error: Error): void => {
             this.logger.error('redis', `An error occured: ${error}`);
         }).on('reconnecting', (): void => {
@@ -51,7 +47,7 @@ export class RedisClient {
         this.redis.subscribe('bot.status');
         this.redis.publish('bot.status', 'true');
 
-        this.redis.psubscribe(this.channels);
+        await this.redis.psubscribe(this.channels);
     }
 
 }

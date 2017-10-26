@@ -27,6 +27,12 @@ ENV TOKEN= \
     REDIS= \
     REDIS_CHANNELS= 
 
+
+
+
+
+    
+
 # Copy, build, and run
 COPY . .
 
