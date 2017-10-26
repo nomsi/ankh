@@ -17,17 +17,14 @@
   "license": "MIT",
   "dependencies": {
     "cassette": "github:appellation/cassette#master",
-    "discord.js": "github:devsnek/discord.js#feature/ws-compression",
-    "i": "^0.3.6",
-    "nan": "^2.7.0",
+    "discord.js": "github:devsnek/discord.js",
     "pg": "6.4.2",
     "redis": "^2.8.0",
     "redis-p": "github:appellation/redis-p#master",
     "sequelize": "^4.10.0",
     "snekfetch": "github:devsnek/snekfetch#master",
     "tsubaki": "^1.2.0",
-    "yamdbf": "github:zajrik/yamdbf",
-    "zlib-sync": "git+https://git.abal.moe/abal/zlib-sync"
+    "yamdbf": "github:zajrik/yamdbf"
   },
   "devDependencies": {
     "@types/node": "^8.0.0",
