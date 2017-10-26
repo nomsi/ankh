@@ -16,9 +16,5 @@ export class MessageEvent {
         if (message.channel.type !== 'text')
             return;
 
-        const prefix: Promise<string> = this._client.getPrefix(message.guild);
-        if (await message.content.startsWith(prefix.toString())) {
-
-        }
     }
 }
