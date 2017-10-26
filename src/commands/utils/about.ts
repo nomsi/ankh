@@ -1,6 +1,6 @@
 import { Client, Command, Message, Time } from 'yamdbf';
 import { RichEmbed, Guild } from 'discord.js';
-import { EmbedCode, channelOnly } from '../../lib/Util';
+import { EmbedCode } from '../../lib/Util';
 
 const { version } = require('../../../package');
 
