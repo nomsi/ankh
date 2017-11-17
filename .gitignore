@@ -8,3 +8,4 @@ dist/
 .vs/
 .git
 docker-compose.yml
+test.ts

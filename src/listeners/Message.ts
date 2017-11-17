@@ -15,6 +15,5 @@ export class MessageEvent {
     private async _onMessage(message: Message): Promise<void> {
         if (message.channel.type !== 'text')
             return;
-
     }
 }

@@ -4,3 +4,4 @@ storage/
 Dockerfile
 .gitignore
 .dockerignore
+.vscode/
