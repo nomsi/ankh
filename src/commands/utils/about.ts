@@ -28,7 +28,7 @@ export default class extends Command<Client> {
                 .reduce((memA: number, memB: number) => memA + memB), true)
             .addField('Memory Usage', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}mb`, true)
             .addField('Uptime', Time.difference(this.client.uptime * 2, this.client.uptime).toString(), true)
-            .addField('Help', `To see currently avaliable commands, type ?help`, true);
+            .addField('Help', `To see currently avaliable commands, type <@${this.client.user.id}> help`, true);
         message.channel.send({ embed });
     }
 }
