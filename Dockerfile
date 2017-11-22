@@ -9,7 +9,6 @@ WORKDIR /usr/src/ankh
 # Copy important stuff.
 COPY package.json package-lock.json ./
 
-
 # Install dependencies
 RUN apk add --update \
     && apk add --no-cache curl \

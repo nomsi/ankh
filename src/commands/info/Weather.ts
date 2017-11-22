@@ -1,5 +1,6 @@
 import { CommandDecorators as c, Client, Command, Message, GuildStorage } from 'yamdbf';
 import * as snekfetch from 'snekfetch';
+import { MessageCollector, MessageEditOptions } from 'discord.js';
 
 @c.aliases('w', 'weather')
 @c.info('Weather via wttr.in')
@@ -13,7 +14,7 @@ export class Weather extends Command<Client> {
         });
     }
     public async action(message: Message, args: string[]): Promise<void> {
-        const _message: any | Message = await message.reply('Please wait..');
+        const _message: Message | any = await message.reply('Please wait..');
         if (!args[0]) {
             _message.edit('No location data given! Please feed me location data.');
         } else {
