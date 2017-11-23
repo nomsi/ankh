@@ -24,7 +24,8 @@ ENV TOKEN= \
     OWNERS= \
     PGSQL_DB= \
     REDIS= \
-    REDIS_CHANNELS= 
+    REDIS_CHANNELS= \
+    LASTFM_API=
 
 # Copy, build, and run
 COPY . .
