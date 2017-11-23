@@ -9,6 +9,8 @@ services:
       - OWNERS=
       - PGSQL_DB=postgres://ankh:ankh@postgres/ankh
       - REDIS=redis
+      - REDIS_CHANNELS=chat.*|web.*
+      - LASTFM_API=
     depends_on:
       - redis
       - postgres
