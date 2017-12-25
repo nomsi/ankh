@@ -1,7 +1,7 @@
 {
-  "name": "ankh-js",
+  "name": "ankh",
   "version": "1.0.0",
-  "description": "",
+  "description": "Yet another discord bot.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,10 +11,21 @@
     "url": "git+https://github.com/truency/ankh.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Nomsy <me@nomsy.net>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/truency/ankh/issues"
   },
-  "homepage": "https://github.com/truency/ankh#readme"
+  "homepage": "https://github.com/truency/ankh#readme",
+  "dependencies": {
+    "discord.js": "github:hydrabolt/discord.js#master",
+    "pg": "^7.4.0",
+    "redis": "^2.8.0",
+    "redis-p": "^0.1.8",
+    "sequelize": "^4.28.6",
+    "snekfetch": "github:devsnek/snekfetch#master"
+  },
+  "devDependencies": {
+    "eslint": "^4.14.0"
+  }
 }
