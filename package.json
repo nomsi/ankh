@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/truency/ankh#readme",
   "dependencies": {
+    "discord-handles": "github:appellation/handles#master",
     "discord.js": "github:hydrabolt/discord.js#master",
     "pg": "^7.4.0",
     "redis": "^2.8.0",
