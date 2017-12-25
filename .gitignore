@@ -7,4 +7,3 @@ storage/
 dist/
 .vs/
 .git
-docker-compose.yml
