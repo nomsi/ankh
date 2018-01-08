@@ -8,13 +8,14 @@ export enum EmbedCode {
 }
 
 export enum EmojiCode {
-    'MusicNote' = '<a:musical_note:399816121449971712:>',
-    'Loading' = '<a:colourfultyping:399814338942074880:>',
-    'SadCloudBlob' = '<a:ablobsadcloud:399821203679739915:>',
+    'MusicNote' = '🎵',
+    'Loading' = '<a:colourfultyping:397119666956402698>',
+    'SadCloudBlob' = '<a:ablobsadcloud:396521263247654912>',
+    'SadLizard' = '<a:icri:394658352174465024>'
 }
 
 export enum ErrorCodes {
     'NOT_FOUND_BLIZZARD' = 'Profile was not found. Try using a different name?',
     'NOT_FOUND_WEB' = '404 Not Found was returned',
-    'ERROR_WENT_WRONG' = 'Something went wrong. Please contact the creator.',
+    'ERROR_WENT_WRONG' = 'Something went wrong. Please contact my creator.',
 }
