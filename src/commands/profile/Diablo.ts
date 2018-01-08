@@ -1,6 +1,4 @@
-import { RichEmbed } from 'discord.js';
 import { CommandDecorators as c, Client, Command, Message } from 'yamdbf';
-import * as snek from 'snekfetch';
 
 /**
  * Diablo Career Profile Command
@@ -23,7 +21,7 @@ export class Diablo extends Command<Client> {
      * @param args arguments
      */
     public action(message: Message, args: string[]): void {
-        if (args[1]) return;
+        if (args[1]) this.getProfile(null);
     }
 
     /**

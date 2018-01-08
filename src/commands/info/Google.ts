@@ -1,5 +1,4 @@
 import { CommandDecorators as c, Client, Command, Message } from 'yamdbf';
-import * as request from 'snekfetch';
 
 @c.aliases('g', 'google', 'search')
 @c.info('Google search')
@@ -13,7 +12,7 @@ export class Google extends Command<Client> {
         });
     }
     public async action(message: Message, args: string[]): Promise<void> {
-        const msg: Message | Message[] = await message.channel.send('Searching..');
+        // const msg: Message | Message[] = await message.channel.send('Searching..');
         return;
     }
 }

@@ -4,13 +4,12 @@ const tsc = require('gulp-tsc');
 const tslint = require('tslint');
 const lint = require('gulp-tslint');
 const del = require('del');
-const runseq = require('run-sequence');
 const shell = require('gulp-shell');
 
 const project = ts.createProject('tsconfig.json');
 const linter = tslint.Linter.createProgram('tsconfig.json');
 
-gulp.task('default', ['build']);
+gulp.task('default', ['lint', 'build']);
 
 gulp.task('lint', () => {
     gulp.src('./src/**/*.ts').pipe(lint({

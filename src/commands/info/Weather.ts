@@ -1,6 +1,5 @@
-import { CommandDecorators as c, Client, Command, Message, GuildStorage } from 'yamdbf';
+import { CommandDecorators as c, Client, Command, Message } from 'yamdbf';
 import * as snekfetch from 'snekfetch';
-import { MessageCollector, MessageEditOptions } from 'discord.js';
 
 @c.aliases('w', 'weather')
 @c.info('Weather via wttr.in')

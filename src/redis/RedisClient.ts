@@ -1,5 +1,4 @@
-import { RedisClient as client, Multi, createClient as CreateClient } from 'redis';
-import * as redis from 'redis-p';
+import { RedisClient as client } from 'redis';
 import { Logger } from 'yamdbf';
 
 export class RedisClient {

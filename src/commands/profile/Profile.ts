@@ -1,12 +1,10 @@
-import { CommandDecorators as c, Client, Command, Message, GuildStorage } from 'yamdbf';
+import { CommandDecorators as c, Client, Command } from 'yamdbf';
 
 @c.guildOnly
 @c.aliases('me', 'pr')
 @c.info('Ankh Profile System')
 @c.group('ankh-profile')
 export class Profile extends Command<Client> {
-
-    private storage: GuildStorage;
 
     public constructor() {
         super({
@@ -16,19 +14,19 @@ export class Profile extends Command<Client> {
         });
     }
 
-    public async action(message: Message, args: string[]): Promise<void> {
-    }
+    // public async action(message: Message, args: string[]): Promise<void> {
+    // }
 
-    private async set(message: Message, _storage: GuildStorage, data: string[]) {
-    }
+    // private async set(message: Message, _storage: GuildStorage, data: string[]) {
+    // }
 
-    private async view(message: Message, _storage: GuildStorage, data: string[]) {
-    }
+    // private async view(message: Message, _storage: GuildStorage, data: string[]) {
+    // }
 
-    private async update(message: Message, _storage: GuildStorage, data: string[]) {
-    }
+    // private async update(message: Message, _storage: GuildStorage, data: string[]) {
+    // }
 
-    private async delete(message: Message, _storage: GuildStorage, data: string[]) {
-    }
+    // private async delete(message: Message, _storage: GuildStorage, data: string[]) {
+    // }
 
 }

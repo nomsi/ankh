@@ -1,10 +1,9 @@
-import { Client, ListenerUtil, LogLevel, Logger, Util, Providers } from 'yamdbf';
+import { Client, ListenerUtil, LogLevel, Logger, Providers } from 'yamdbf';
 import { RedisClient as redis } from '../redis/RedisClient';
 
 const { PostgresProvider } = Providers;
 const { on, once } = ListenerUtil;
 const { TOKEN, OWNERS, COMMAND_PREFIX, PGSQL_DB, REDIS, REDIS_CHANNELS } = process.env;
-const { version } = require('../../package.json');
 
 export class AnkhClient extends Client {
 

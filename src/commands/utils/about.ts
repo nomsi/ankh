@@ -17,7 +17,6 @@ export default class extends Command<Client> {
     }
 
     public action(message: Message): void {
-        const calltag: string = '``';
         const embed: RichEmbed = new RichEmbed()
             .setAuthor('Ankh', this.client.user.avatarURL)
             .setColor(EmbedCode.Profile)
