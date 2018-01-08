@@ -60,7 +60,7 @@ export class Lastfm extends Command<Client> {
                     artist: tracks[0]['artist']['#text'],
                     song: tracks[0]['name'],
                     album: tracks[0]['album']['#text'],
-                    image: tracks[0]['image'][4]['#text'],
+                    image: tracks[0]['image'][3]['#text'],
                     url: tracks[0]['url']
                 });
             } else {
