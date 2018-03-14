@@ -13,7 +13,7 @@ export class Weather extends Command<Client> {
         });
     }
     public async action(message: Message, args: string[]): Promise<void> {
-        const _message: Message | any = await message.reply('Please wait..');
+        const _message: Message = <Message> await message.reply('Please wait..');
         if (!args[0]) {
             _message.edit('No location data given! Please feed me location data.');
         } else {
