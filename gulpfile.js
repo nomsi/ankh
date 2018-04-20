@@ -1,6 +1,5 @@
 const gulp = require('gulp');
 const ts = require('gulp-typescript');
-const tsc = require('gulp-tsc');
 const tslint = require('tslint');
 const lint = require('gulp-tslint');
 const del = require('del');
