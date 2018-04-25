@@ -1,6 +1,6 @@
 {
   "name": "ankh",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Yet another discord bot",
   "scripts": {
     "test": "gulp lint",
@@ -16,29 +16,21 @@
   "author": "Nomsy <me@nomsy.net>",
   "license": "MIT",
   "dependencies": {
-    "cassette": "github:appellation/cassette#master",
-    "cheerio": "^1.0.0-rc.2",
     "pg": "6.4.2",
     "redis": "^2.8.0",
-    "redis-p": "github:appellation/redis-p#master",
     "sequelize": "^4.10.0",
     "snekfetch": "github:devsnek/snekfetch#master",
     "yamdbf": "github:zajrik/yamdbf"
   },
   "devDependencies": {
-    "@types/cheerio": "^0.22.7",
-    "@types/node": "^8.0.0",
-    "@types/redis": "^2.6.0",
-    "@types/sequelize": "^4.0.74",
-    "@types/snekfetch": "^3.1.0",
-    "del": "^3.0.0",
+    "@types/node": "^8.10.0",
+    "@types/redis": "^2.8.5",
+    "@types/sequelize": "github:types/sequelize",
     "gulp": "^3.9.1",
-    "gulp-shell": "^0.6.3",
-    "gulp-tsc": "^1.3.2",
-    "gulp-tslint": "^8.1.1",
-    "gulp-typescript": "^3.1.7",
-    "run-sequence": "^1.2.2",
-    "tslint": "^5.4.3",
-    "typescript": "^2.3.4"
+    "del": "^3.0.0",
+    "gulp-tslint": "^8.1.2",
+    "gulp-typescript": "^3.2.3",
+    "tslint": "^5.8.0",
+    "typescript": "^2.8.0-rc"
   }
 }
